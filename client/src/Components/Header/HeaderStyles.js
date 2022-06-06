@@ -8,6 +8,7 @@ width: 100vw;
 height: 100vh;
 top:0;
 right: 0;
+
 `
 
 export const Main = styled.div`
@@ -27,8 +28,8 @@ height: 72px;
     linear-gradient(
       to right, 
       var(--purple-light), var(--purple-mid)
-    );
-border-bottom: 3px solid var(--purple-dark);  */
+    );*/
+border-bottom: 2px solid var(--purple-dark);  
 
 
 `

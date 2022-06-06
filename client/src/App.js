@@ -6,6 +6,7 @@ import { GlobalStyles } from './GlobalStyles';
 import{BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Error from './Components/Error';
 import { Offer } from './Components/Offer';
+import CarInfo from './Components/CarInfo';
 
 
 const App = () =>{
@@ -26,6 +27,7 @@ const App = () =>{
         <Route path="/" element={<Content/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/offer" element={<Offer/>}/>
+        <Route path="/carInfo/:id" element={<CarInfo/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
       </Router>

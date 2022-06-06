@@ -5,32 +5,56 @@ import imageCars from '../../cars3.jpg'
 import Google from '../../google.png'
 import Facebook from '../../facebook.png'
 import Axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
 const Login = () =>{
+
+
+    const navigate = useNavigate();
 
     const [isRegistered, setIsRegistered] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-const [isLogged, setIsLogged] = useState(false)
+const [isLogged, setIsLogged] = useState({error: false,message: ""})
+const [isReg, setIsReg] = useState({error: 0,message: ""})
     const changeButton = () =>{
         setIsRegistered(!isRegistered)
     }
 
     const tryLogin = () =>{
-        console.log(isLogged)
+        console.log(isRegistered)
+        !isRegistered ?
         Axios.post("http://localhost:3001/tryLogin", {
             email: email,
             password: password,
         }).then((response) => {
 
-            console.log(response.data.message)
-            if(response.data.message == true){
-                setIsLogged(true)
+            console.log(response.data)
+            console.log(response.data.result.length > 0)
+            if(response.data.result.length > 0){
+                setIsLogged({error: true,message: "Poprawne zalogowanie"})
+                localStorage.setItem("name",JSON.stringify(response.data.result))
+                navigate("/");
             }else{
-                setIsLogged(false)
+                setIsLogged({error: false,message: "Podano zły login/hasło"})
             }
             console.log(isLogged)
-        })
+        }) :
+        console.log("o tutaj");
 
+        if(email !== "" && password !== ""){
+
+        Axios.post("http://localhost:3001/register", {
+            email: email,
+            password: password,
+        }).then((response) => {
+
+            setIsReg({error: 1, message:"Rejestracja przebiegła pomyślnie"})
+        })
+    }else{
+        setIsReg({error: 2, message:"oba pola muszą być wypełnione"})
+        console.log("blad");
+    }
 
     }
     return (
@@ -67,8 +91,10 @@ const [isLogged, setIsLogged] = useState(false)
                 />          
 
                 <Holder><Reminder>Nie pamiętasz hasła?</Reminder></Holder>
-                <ConfirmButton onClick={tryLogin}> Zaloguj się</ConfirmButton>
-                {isLogged && <h3>Udało się zalogować</h3>}
+                <ConfirmButton onClick={tryLogin}> {!isRegistered ? "Zaloguj się" : "Rejestracja"}</ConfirmButton>
+                {!isLogged.error && <h3>{isLogged.message}</h3>}
+                {isReg.error == 2 && <h3>{isReg.message}</h3>}
+                {isReg.error == 1 && <h3>{isReg.message}</h3>}
             </Container>
         </>
         
