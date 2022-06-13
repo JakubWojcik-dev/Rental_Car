@@ -7,6 +7,7 @@ import{BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Error from './Components/Error';
 import { Offer } from './Components/Offer';
 import CarInfo from './Components/CarInfo';
+import Order from './Components/Orders';
 
 
 const App = () =>{
@@ -28,6 +29,7 @@ const App = () =>{
         <Route path="/login" element={<Login/>}/>
         <Route path="/offer" element={<Offer/>}/>
         <Route path="/carInfo/:id" element={<CarInfo/>}/>
+        <Route path="/order/:id" element={<Order/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
       </Router>

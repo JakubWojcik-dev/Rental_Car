@@ -48,7 +48,7 @@ h3{
 `
 export const Button = styled.button`
 
-width: 200px;
+width: 250px;
 //position: relative;
 //bottom: 0;
 //right: 0;
@@ -71,14 +71,14 @@ h3{
 `
 
 export const Input = styled.input.attrs({ 
-  type: 'text',
+  type: 'date',
   placeholder: "liczba dni",
 })`
   
   background-color: var(--purple-lighter);
-  margin-bottom: 0;
+  margin: 0 20px;
  // text-transform: uppercase;
-  width: 25vw;
+  width: 200px;
   border-radius: 5px;
   height: 35px;
  border: 2px solid var(--purple-dark);
@@ -91,5 +91,14 @@ export const Input = styled.input.attrs({
 
   }
  ` 
+export const Holder = styled.div`
 
+padding-left: 200px;
+margin-top:80px;
+display: flex;
+width:20vw;
+height: 10vh;
+text-align:right;
+justify-content: space-between;
+`
     

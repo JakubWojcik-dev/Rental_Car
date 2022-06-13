@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Header'
-import { Container, Image, Div, Button } from './OfferStyles'
+import { Container, Image, Div, Button} from './OfferStyles'
 import imageCars from '../../cars4.jpg'
 import sam1 from '../../samochod1.jpg'
 import sam2 from '../../samochod2.jpg'
@@ -32,6 +32,8 @@ export const Offer = () => {
   return (
     <>
     <Header/>
+
+    
     { data.map((e) =>(
       
     <Container key={e.id}>

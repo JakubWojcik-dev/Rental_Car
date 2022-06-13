@@ -56,7 +56,7 @@ const Header = () =>{
             </Container>
             : 
             <Container>
-                <h4>{login[0].email}</h4>
+                <h4 onClick={() => {navigate(`/order/:${login[0].id}`)}}>{login[0].email}</h4>
                 <Button onClick={Logout}>
                     <h3>Wyloguj</h3>
                 </Button>
